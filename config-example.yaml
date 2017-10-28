@@ -1,42 +1,21 @@
-# port
 # port that will receive http requests.
 # some operating systems will requires a admin role to use ports < 1024
-port: 9080
+port: 9082
 
 # index [optional, default value: False]
-# is an index page required (in case a visitors send a request to the
-# server using an unknown hostname
+# is an index page required (in case a visitors send a request to the server using an unknown hostname
 # default: False
 index: True
+    
 sites:
-
-  # ref
-  # reference on Google Sites, one entry per Google Site
-  - ref: go-gsites-proxy
-
-    # favicon [optional]
-    # specify a path to an icon file
-    faviconpath: favicon.ico
-
-    # host
-    # hostname that will receive the http requests, port should
-    # be specified if port != 80
-    host: localhost:9080
-
-    # redirects [optional]
-    # list of hosts that should be redirected to this site
-    redirects:
-    - www.ggsp.fever.ch
-
-    # language [optional]
-    # language requested when connecting to Google Sites backend
-    language: en-GB,en;q=0.8,en-US;q=0.6,fr;q=0.4
-
-    # description [optional]
-    # name of this site. it is currently used in the index
-    description: Go Google Sites Proxy
-
+  - ref: gaetanasolwedding              		# the name of the website on Google Sites
+  
+    host: gaetanasolwedding.com         		# the vhost linked with the current site
+    language: en-US, en;q=0.9           		# a language hint, to get a properly localized page
+    description: Xavier and Elisa's wedding  	# a short description of this site
+    faviconpath: favicon.ico					# specify a path to an icon file
+    
+#Proxy
     frontproxy:
-      type: CloudFlare
-
-      force-ssl: True
+    type: CloudFlare
+    force-ssl: True
